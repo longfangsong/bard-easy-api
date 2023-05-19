@@ -1,0 +1,21 @@
+{
+  "name": "bard-easy-api",
+  "devDependencies": {
+    "@types/node": "^20.1.5",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "class-transformer": "^0.5.1",
+    "https-proxy-agent": "^6.1.0",
+    "node-fetch": "^3.3.1"
+  },
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Unlicense",
+  "description": "",
+  "type": "module"
+}
