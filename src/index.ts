@@ -1,9 +1,8 @@
-import 'reflect-metadata';
 import fetch from "node-fetch";
 import { HttpsProxyAgent } from "https-proxy-agent";
 const headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36",
-    "Cookie": `__Secure-1PSID=${process.env.__Secure_1PSID}`
+    "Cookie": `__Secure-1PSID=${process.env.Secure_1PSID}`
 }
 export class ChatSession {
     private requestId: number = 0;
@@ -39,7 +38,6 @@ export class ChatSession {
         }
     }
     static fromJSON(json: string): ChatSession {
-        // return plainToClass(ChatSession, json);
         let parsed = JSON.parse(json);
         let session = new ChatSession();
         session.requestId = parsed.requestId;
@@ -50,7 +48,7 @@ export class ChatSession {
         session.lastChoiceId = parsed.lastChoiceId;
         return session;
     }
-    parseResponse(response: string): [string, [string, string, string]] {
+    private parseResponse(response: string): [string, [string, string, string]] {
         const lines = response.split('\n');
         const theLine = lines.find(it => it.includes("wrb.fr"));
         const innerStr = JSON.parse(theLine!)[0][2];
